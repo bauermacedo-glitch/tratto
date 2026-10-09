@@ -1,0 +1,13 @@
+import { chromium } from '/opt/node-tools/node_modules/playwright/index.mjs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+const dir = path.dirname(fileURLToPath(import.meta.url));
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
+await page.goto('file://' + path.join(dir, 'background.html'));
+await page.waitForTimeout(300);
+await page.screenshot({ path: path.join(dir, 'tratto-zoom-bg-dark.png') });
+await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
+await page.waitForTimeout(100);
+await page.screenshot({ path: path.join(dir, 'tratto-zoom-bg-light.png') });
+await browser.close();

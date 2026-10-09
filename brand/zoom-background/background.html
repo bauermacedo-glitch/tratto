@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Tratto — fundo de reunião</title>
+<style>
+  :root{
+    --bg1:#0E1420; --bg2:#182238; --ink:#F4F1EA; --muted:rgba(244,241,234,.55);
+    --accent:#E8613C; --accent2:#F2A07B; --line:rgba(244,241,234,.08);
+  }
+  html[data-theme="light"]{
+    --bg1:#F6F3EC; --bg2:#E9E3D6; --ink:#141A26; --muted:rgba(20,26,38,.55);
+    --accent:#D9532F; --accent2:#E8613C; --line:rgba(20,26,38,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;font-family:"Inter Display","Inter",system-ui,sans-serif;
+       background:radial-gradient(1400px 900px at 30% 40%, var(--bg2) 0%, var(--bg1) 70%);color:var(--ink);position:relative}
+  /* grade fina, dá textura sem brigar com a pessoa */
+  .grid{position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:96px 96px;mask-image:radial-gradient(1200px 800px at 50% 50%,transparent 0%,transparent 35%,#000 100%);
+    -webkit-mask-image:radial-gradient(1200px 800px at 50% 50%,transparent 0%,transparent 35%,#000 100%)}
+  /* o "tratto": um traço único, varrendo a lateral direita */
+  svg.stroke{position:absolute;right:-140px;top:-80px;width:1200px;height:1300px;opacity:.95}
+  .brand{position:absolute;left:96px;top:84px;display:flex;align-items:center;gap:22px}
+  .mark{width:64px;height:64px}
+  .word{font-size:54px;font-weight:600;letter-spacing:-.03em;line-height:1}
+  .word span{color:var(--accent)}
+  .tag{position:absolute;left:96px;bottom:84px;font-size:22px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .corner{position:absolute;right:96px;bottom:84px;font-size:18px;letter-spacing:.08em;color:var(--muted);font-weight:500}
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+
+  <svg class="stroke" viewBox="0 0 1200 1300" fill="none">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="var(--accent2)"/><stop offset="1" stop-color="var(--accent)"/>
+      </linearGradient>
+    </defs>
+    <!-- traço principal: um gesto só, grosso no meio, fino nas pontas -->
+    <path d="M1180 60 C 980 240, 760 420, 700 700 C 650 940, 760 1120, 1100 1260"
+          stroke="url(#g)" stroke-width="18" stroke-linecap="round" opacity=".9"/>
+    <path d="M1120 20 C 900 220, 690 440, 640 720 C 595 960, 720 1150, 1040 1290"
+          stroke="url(#g)" stroke-width="3" stroke-linecap="round" opacity=".45"/>
+    <path d="M1200 140 C 1040 300, 860 460, 790 700 C 740 900, 830 1080, 1150 1220"
+          stroke="url(#g)" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+  </svg>
+
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 64 64" fill="none">
+      <rect x="2" y="2" width="60" height="60" rx="16" stroke="var(--ink)" stroke-width="3"/>
+      <path d="M16 40 C 26 20, 38 20, 48 40" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <div class="word">tratto<span>.</span></div>
+  </div>
+
+</body>
+</html>
