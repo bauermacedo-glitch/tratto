@@ -7,7 +7,4 @@ const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, de
 await page.goto('file://' + path.join(dir, 'background.html'));
 await page.waitForTimeout(300);
 await page.screenshot({ path: path.join(dir, 'tratto-zoom-bg-dark.png') });
-await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
-await page.waitForTimeout(100);
-await page.screenshot({ path: path.join(dir, 'tratto-zoom-bg-light.png') });
 await browser.close();
